@@ -37,3 +37,22 @@ str(airquality)
 par(mfrow=c(1,2), mar = c(5,4,2,1))
 with(subset(airquality, Mon = "8"), plot(Temp, Ozone), main="8" )
 with(subset(airquality, Mon = "6"), plot(Temp, Ozone), main="6" )
+
+
+#Plotting
+#base plot
+library(datasets)
+data(cars)
+with(cars,  plot(speed, dist))
+
+# Lattice plot
+library(lattice)
+state<- data.frame(state.x77, region = state.region)
+xyplot(Life.Exp ~ Income | region, data = state, layout = c(4,1))
+
+#ggplot2 system (grammer graphics)
+library(ggplot2)
+data(mpg)
+qplot(displ, hwy, data = mpg)
+
+

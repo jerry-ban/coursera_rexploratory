@@ -62,4 +62,29 @@ Summary:
     let you summarize the data(usually graphicall) and highly any broad  features
     explore basic questions and hypotheses(and perhaps rule them out)
     suggest modeling strategies for the next step
+
+
+
+3 PLOTTING sYSTEM
+    The Base plotting system: 
+        Artist's palette model, 
+        start with blank canvas and build up from there
+        starting with plot function(or similar)
+        use annotation functions to add/modify(test, lines, points, axis)
+
+        It is convenient, but can't go back once plot has started and need to plan in advance; difficult to "translate" to others plot, and it made by R command
+        
+    The Lattice System
+        plots are created with a single functioon call(xyplot, bwplot, etc.)
+        most useful for (coplot) conditioning types of plots: looking at how y changes with x across levels of z
+        things like margings/spacing set automatically because entier plot is specified at once
+        good for putting many plots on a screen
+        
+        
+    ggplot2 system
+        Splits the difference between base and lattice in a number of ways.
+        Automatically deals with spacings, text, titles, but also allows you to annotate by "adding" to a plot
+        superficial  similarity to lattice but generally easier/more intuitive to use
+        default mode makes many choices for you(but you can still customize)
+    
     
