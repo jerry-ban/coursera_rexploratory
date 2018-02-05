@@ -1,0 +1,36 @@
+getwd()
+setwd("C:/_research/homeworks/hw001/ExData_Plotting1")
+
+raw_data <- read.table("./household_power_consumption.txt", header = TRUE, sep = ";", stringsAsFactors = FALSE)
+col_names <-names(raw_data)
+raw_data$Timestamp = strptime(paste(raw_data$Date, raw_data$Time), "%d/%m/%Y %H:%M:%S")
+raw_data["Date"]=as.Date(raw_data$Date, format="%d/%m/%Y")
+data = subset(raw_data, Date >= "2007-02-01" & Date <=" 2007-02-02")
+#data$time = strptime(data$Time,  format=" %H:%M:%S")
+head(data)
+str(data)
+head(raw_data$Timestamp)
+
+data$Global_active_power = as.numeric(data$Global_active_power)  
+data$Global_reactive_power = as.numeric(data$Global_reactive_power)  
+data$Voltage = as.numeric(data$Voltage)  
+data$Global_intensity = as.numeric(data$Global_intensity)  
+data$Sub_metering_1 = as.numeric(data$Sub_metering_1)  
+data$Sub_metering_2 = as.numeric(data$Sub_metering_2)  
+data$Sub_metering_3 = as.numeric(data$Sub_metering_3)  
+
+
+par(mfrow = c(2,2))
+with(data, plot(Timestamp, Global_active_power, type = "l", ylab="Energy sub metering", xlab="" ) )
+with(data, plot(Timestamp, Voltage, type = "l", ylab="Voltage", xlab="datetime" ) )
+
+with(data, plot(Timestamp, Sub_metering_1, type = "l", ylab="Energy sub metering", xlab="" ) )
+with(data, points(Timestamp, Sub_metering_2, type = "l", col="red") )
+with(data, points(Timestamp, Sub_metering_3, type = "l", col="blue"))
+legend("topright", col=c("black", "red", "blue"),legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),
+        cex = 0.8, lty =1, lwd =1)
+
+with(data, plot(Timestamp, Global_reactive_power, type = "l",  xlab="datetime" ) )
+
+dev.copy(png, file="plot4.png", width=480, height=480)
+dev.off()

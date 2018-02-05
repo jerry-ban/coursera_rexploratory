@@ -88,3 +88,78 @@ Summary:
         default mode makes many choices for you(but you can still customize)
     
     
+The plotting System:
+    the core plotting and graphics engine in R is encapsulated in following packages:
+        graphics: base graphing systems, including plot, hist, boxplot, ...
+        grDevices: all the code implementing the various graphics devices, like X11, PDF, PostScript, PNG, ...
+    The lattice plotting system is implemented with following packages:
+        lattice: cdoe fore producing Trellis graphics, which independent of  base graphcis, including xyplot, bwplot, levelplot
+        grid: independent of the base system, we seldom call direct from grid package, lattice package builds on top of grid
+        
+    Some important Base Graphics Parameters
+        pch: the plotting sysbol(default is open circle. if the value is a #, referred to a table for predefinedshape, or character, like "a", then use that character as sysbol)
+        lty: line type( default is solid line)
+        lwd: line width( integer)
+        col: the plotting color(a number, string, or hex code, function colors() give a vector of colors by name)
+        xlab/ylab: character string for x-axis/y-axis
+        
+        par() used to specify global graphcis parameters affecting all plots in R session, these parameters can be overridden with speficied arguments to specific plotting functions:
+        las: the orientation of axis labels
+        bg: background color
+        mar: margin size
+        oma: the outer margin size(default is 0)
+        mfrow: # of plots per row, column(plot filled row-wise)
+        mfcol: # of plots per row, column(plots are filled column-wise)
+        par("lty")
+        
+Base plot functions:
+    plot:
+    lines:
+    points:
+    text:
+    title:
+    mtext:
+    axis: 
+
+
+    
+        
+    
+    
+    the most common graphics for a plot to be "send" is screen device,
+    on Mac, the screen device is launched with quartz(), on WIndows, it's windows(), on Unix/Linux, it's x11()
+    ?Devices to show device list
+    
+    To use a graphics device, 4 steps:
+    1 Launch a graphics device
+    2 call a plot function to make a plot,
+    3 annotate the plot
+    4 explicitly close the graphics device with dev.off()
+    
+    pdf(file="myplot.pdf")
+    with(faithful, plot(eruptions, waiting))
+    title(main="old Faithful Geyser data")
+    dev.off() or plot.new() to reset()
+    if multi graphics opened,  dev.cur() to lis tthe currently active device, every open device is assigned a # >2
+    use dev.set(3) to activate the corresponding device
+    dev.copy: copy a plot from one device to another
+    dev.copy2pdf: copy a plot to pdf
+    
+    
+    vector formats devices:
+    pdf
+    svg: scalable vector graphics, support animation
+    win.metafile
+    postscript
+    
+    Bitmap formats devices:
+    png: good for line drawings or images with solid colors
+    jpeg: good for photo or natural scenes, food for plotting many many points
+    tiff: support lossless compression
+    bmp:
+    
+    library(swirl)
+    install_from_swirl("Exploratory Data Analysis")
+    
+    
+    
